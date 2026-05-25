@@ -1,0 +1,107 @@
+<div class="settings-page">
+  <div class="page-header">
+    <h1 class="page-title">Settings</h1>
+    <p class="page-sub">Manage your workspace preferences</p>
+  </div>
+
+  <!-- Profile section -->
+  <div class="settings-section">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+      Profile
+    </div>
+    <div class="settings-card">
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Display Name</span>
+          <span class="setting-desc">Shown in the header and workspace</span>
+        </div>
+        <input
+          class="text-input"
+          type="text"
+          [(ngModel)]="settings.displayName"
+          placeholder="Your name"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="settings-section">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
+      </svg>
+      Notifications
+    </div>
+    <div class="settings-card">
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Overdue Alerts</span>
+          <span class="setting-desc">Show warnings when tasks pass their due date</span>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" [(ngModel)]="settings.notifyOverdue" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">New Task Alerts</span>
+          <span class="setting-desc">Show a notification when a task is added</span>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" [(ngModel)]="settings.notifyNewTask" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appearance -->
+  <div class="settings-section">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      Appearance
+    </div>
+    <div class="settings-card">
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Compact View</span>
+          <span class="setting-desc">Reduce spacing to show more tasks on screen</span>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" [(ngModel)]="settings.compactView" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Default View</span>
+          <span class="setting-desc">Which tab opens when you launch the app</span>
+        </div>
+        <select class="select-input" [(ngModel)]="settings.defaultView">
+          <option value="dashboard">Dashboard</option>
+          <option value="analytics">Analytics</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="settings-actions">
+    <button class="btn-save" (click)="saveSettings()">
+      @if(saved) {
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Saved!
+      } @else {
+        Save Settings
+      }
+    </button>
+    <button class="btn-danger" (click)="clearAllData()">Reset All Data</button>
+  </div>
+</div>

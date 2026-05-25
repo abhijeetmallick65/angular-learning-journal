@@ -1,0 +1,157 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 680px;
+  animation: fadeUp var(--dur-slow) var(--ease-out) both;
+}
+
+.page-header { display: flex; flex-direction: column; gap: 4px; }
+.page-title  { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); }
+.page-sub    { font-size: 0.875rem; color: var(--text-tertiary); }
+
+/* Section */
+.settings-section { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+}
+
+.settings-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--dur-fast) ease;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: var(--surface-1); }
+}
+
+.setting-info { display: flex; flex-direction: column; gap: 3px; }
+.setting-name { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
+.setting-desc { font-size: 0.78rem; color: var(--text-tertiary); }
+
+/* Toggle */
+.toggle { display: flex; align-items: center; cursor: pointer; flex-shrink: 0; }
+.toggle input { display: none; }
+
+.toggle-track {
+  position: relative;
+  width: 42px; height: 24px;
+  background: var(--bg-muted);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-full);
+  transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+.toggle-thumb {
+  position: absolute;
+  left: 3px; top: 50%;
+  transform: translateY(-50%);
+  width: 16px; height: 16px;
+  background: var(--text-tertiary);
+  border-radius: 50%;
+  transition: transform var(--dur-med) var(--ease-spring), background var(--dur-fast) ease;
+}
+.toggle input:checked + .toggle-track {
+  background: var(--indigo);
+  border-color: var(--indigo);
+}
+.toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translate(18px, -50%);
+  background: #fff;
+}
+
+/* Text input */
+.text-input {
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  width: 200px;
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+
+  &::placeholder { color: var(--text-disabled); }
+  &:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+  }
+}
+
+/* Select */
+.select-input {
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+  }
+  option { background: var(--bg-overlay); }
+}
+
+/* Actions */
+.settings-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--r-full);
+  border: none;
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(99,102,241,0.35);
+  transition: transform var(--dur-fast) var(--ease-spring), filter var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+
+  &:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 8px 20px rgba(99,102,241,0.4); }
+  &:active { transform: translateY(0); }
+}
+
+.btn-danger {
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(244,63,94,0.25);
+  background: var(--rose-dim);
+  color: var(--rose);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--dur-fast) ease;
+
+  &:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+}

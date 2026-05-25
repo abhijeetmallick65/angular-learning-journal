@@ -1,0 +1,4 @@
+div {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}

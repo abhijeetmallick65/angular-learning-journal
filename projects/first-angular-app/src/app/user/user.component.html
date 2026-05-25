@@ -1,0 +1,22 @@
+<button
+  class="user-card"
+  [class.selected]="selected"
+  (click)="onSelectUser()"
+  [attr.aria-pressed]="selected"
+>
+  <div class="avatar-wrap">
+    <img [src]="imagePath" [alt]="user.name" />
+    <span class="online-dot"></span>
+  </div>
+  <div class="user-info">
+    <span class="user-name">{{ user.name }}</span>
+    <span class="user-role">Team Member</span>
+  </div>
+  @if(selected) {
+    <span class="selected-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </span>
+  }
+</button>

@@ -1,0 +1,72 @@
+<header>
+  <div class="header-bg-mesh"></div>
+
+  <!-- Brand -->
+  <div class="brand">
+    <div class="logo-wrap">
+      <img src="../assets/task-management-logo.png" alt="EasyTask logo" />
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">EasyTask</span>
+      <span class="brand-tagline">Team Workspace</span>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="header-nav">
+    <button class="nav-chip" [class.active]="activeView === 'dashboard'" (click)="setView('dashboard')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      Dashboard
+    </button>
+    <button class="nav-chip" [class.active]="activeView === 'analytics'" (click)="setView('analytics')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+      Analytics
+    </button>
+    <button class="nav-chip" [class.active]="activeView === 'settings'" (click)="setView('settings')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      Settings
+    </button>
+  </nav>
+
+  <!-- Right side meta -->
+  <div class="header-meta">
+    <!-- Overdue alert badge -->
+    @if(overdueCount > 0) {
+      <div class="overdue-badge" title="{{ overdueCount }} overdue task(s)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        {{ overdueCount }} overdue
+      </div>
+    }
+
+    <!-- Status pill -->
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      All systems operational
+    </div>
+
+    <!-- Avatar stack with names on hover -->
+    <div class="avatar-stack">
+      @for(user of users; track user.id) {
+        <div class="av-wrap" [title]="user.name">
+          <div class="av">{{ user.name.charAt(0) }}</div>
+        </div>
+      }
+      <div class="av-more" title="3 more members">+3</div>
+    </div>
+
+    <!-- Display name -->
+    <div class="user-chip">
+      <div class="user-chip-av">{{ displayName.charAt(0) }}</div>
+      <span class="user-chip-name">{{ displayName }}</span>
+    </div>
+  </div>
+</header>

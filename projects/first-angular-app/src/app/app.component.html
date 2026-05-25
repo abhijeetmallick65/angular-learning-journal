@@ -1,0 +1,81 @@
+<app-header
+  [activeView]="activeView"
+  [displayName]="displayName"
+  [overdueCount]="totalOverdue"
+  (viewChange)="setView($event)"
+></app-header>
+
+<div class="workspace">
+
+  <!-- Sidebar: only on dashboard -->
+  @if(activeView === 'dashboard') {
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title-row">
+          <span class="sidebar-title">Team</span>
+          <span class="member-count">{{ users.length }}</span>
+        </div>
+        <p class="sidebar-subtitle">Select a member to view their tasks</p>
+      </div>
+
+      <ul class="user-list">
+        @for(user of users; track user.id) {
+          <li>
+            <app-user
+              [selected]="user.id === selectedUserId"
+              (select)="onSelectUser($event)"
+              [user]="user"
+            />
+          </li>
+        }
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="footer-stat">
+          <span class="stat-val">{{ users.length }}</span>
+          <span class="stat-label">Members</span>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-stat">
+          <span class="stat-val emerald">Active</span>
+          <span class="stat-label">Status</span>
+        </div>
+      </div>
+    </aside>
+  }
+
+  <!-- Main content -->
+  <main class="content" [class.full-width]="activeView !== 'dashboard'">
+
+    @if(activeView === 'dashboard') {
+      @if(selectedUser) {
+        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
+      } @else {
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/>
+            </svg>
+          </div>
+          <h2 class="empty-title">Choose a teammate</h2>
+          <p class="empty-desc">Select a team member from the sidebar to view their active tasks, deadlines, and progress.</p>
+          <div class="empty-chips">
+            <span class="chip">Task Tracking</span>
+            <span class="chip">Deadlines</span>
+            <span class="chip">Progress</span>
+          </div>
+        </div>
+      }
+    }
+
+    @if(activeView === 'analytics') {
+      <app-analytics></app-analytics>
+    }
+
+    @if(activeView === 'settings') {
+      <app-settings></app-settings>
+    }
+
+  </main>
+</div>
