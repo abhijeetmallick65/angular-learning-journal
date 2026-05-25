@@ -5,7 +5,7 @@ import { DUMMY_USERS } from '../dummy.users';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  standalone: true,
+  standalone: false,
 })
 export class HeaderComponent {
   @Input() activeView: 'dashboard' | 'analytics' | 'settings' = 'dashboard';

@@ -5,8 +5,7 @@ import { User } from './user.modal';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  standalone: true,
-  imports: []
+  standalone: false
 })
 export class UserComponent {
   // @Input({ required: true }) id!: string;

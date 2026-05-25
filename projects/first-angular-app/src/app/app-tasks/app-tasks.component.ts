@@ -7,8 +7,7 @@ import { TaskService } from './task.service';
   selector: 'app-tasks',
   templateUrl: './app-tasks.component.html',
   styleUrls: ['./app-tasks.component.css'],
-  standalone: true,
-  imports: [TaskComponent, AddTaskComponent],
+  standalone: false,
 })
 export class AppTasksComponent {
   @Input({ required: true }) userId!: string;
@@ -31,5 +30,5 @@ export class AppTasksComponent {
   }
 
   onStartAddTask() { this.showAddTask = true; }
-  onCancelTask()   { this.showAddTask = false; }
+  onCancelTask() { this.showAddTask = false; }
 }

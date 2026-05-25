@@ -8,16 +8,13 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent, UserComponent, AppTasksComponent],
   imports: [
     BrowserModule,
-    HeaderComponent,
-    UserComponent,
-    AppTasksComponent,
     AnalyticsComponent,
     SettingsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
